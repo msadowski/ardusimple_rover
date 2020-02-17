@@ -1,0 +1,24 @@
+debug: 1                    # Range 0-4 (0 means no debug statements will print)
+
+device: /dev/ttyACM0
+frame_id: gps
+
+# uart1:
+#   baudrate: 460800
+
+tmode3: 1 # survey-in
+nav_rate: 1
+# Enable u-blox message publishers
+publish:
+  all: false
+  nav:
+    all: true
+    relposned: true
+    posllh: true
+    posecef: true
+sv_in:
+  reset: false              # True: disables and re-enables survey-in (resets)
+                            # False: Disables survey-in only if TMODE3 is
+                            # disabled
+  min_dur: 300              # Survey-In Minimum Duration [s]
+  acc_lim: 3.0              # Survey-In Accuracy Limit [m]
