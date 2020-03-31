@@ -9,6 +9,7 @@ project(ardusimple_rover)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   ublox_gps
+  mapviz
 )
 
 ## System dependencies are found with CMake's conventions
