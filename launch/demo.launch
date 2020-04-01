@@ -10,7 +10,6 @@
   <!-- <node pkg="tf" type="static_transform_publisher" name="map_odom" args="0 0 0 0 0 0 /map /odom 100"/> -->
   <node pkg="tf" type="static_transform_publisher" name="base_gps" args="0 0 0 0 0 0 /base_link /gps 100"/>
 
-
   <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" output="screen">
     <rosparam command="load" file="$(find ardusimple_rover)/config/navsat_config.yaml" />
     <remap from="/imu/data" to="/gps/navheading" />

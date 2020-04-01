@@ -7,3 +7,4 @@ zero_altitude: false
 broadcast_utm_transform: true
 broadcast_utm_transform_as_parent_frame: true
 publish_filtered_gps: false
+yaw_offset: 1.5707963
