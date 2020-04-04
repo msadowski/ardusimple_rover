@@ -1,27 +1,14 @@
 <launch>
-  <arg name="r" value="1"/>
+  <arg name="r" default="1"/>
 
   <param name="/use_sim_time" value="true"/>
 
-  <node pkg="tf" type="static_transform_publisher" name="map_odom" args="0 0 0 0 0 0 /map /odom 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="base_gps" args="0 0 0 0 0 0 /base_link /gps 100"/>
-
-
   <node type="rviz" name="rviz" pkg="rviz" output="screen"/>
 
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock $(find ardusimple_rover)/bags/bag.bag -r $(arg r)"/>
+  <!-- The rosbag should only contain /gps/* topics -->
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock $(find ardusimple_rover)/bags/bag_filtered.bag -r $(arg r)"/>
 
-  <rosparam command="load" file="$(find ardusimple_rover)/config/ekf_ardusimple.yaml"/>
-
-  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="true" output="screen"/>
-
-
-  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" output="screen">
-    <remap from="/imu/data" to="/gps/navheading"/>
-    <remap from="/gps/fix" to="/gps/fix"/>
-    <remap from="odometry/filtered" to="odometry/filtered"/>
-    <rosparam param="datum">[46.2401, 6.0195, 0.0, map, base_link]</rosparam>
-    <rosparam param="broadcast_utm_transform">true</rosparam>
-  </node>
+  <include file='$(find ardusimple_rover)/launch/demo.launch'/>
+  <include file='$(find ardusimple_rover)/launch/mapviz.launch'/>
 
 </launch>
