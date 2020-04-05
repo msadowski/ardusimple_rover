@@ -9,17 +9,3 @@ rate: 1
 nav_rate: 1
 publish:
   all: true
-# tmode3: 1 # survey-in
-# # Enable u-blox message publishers
-
-#   nav:
-#     all: true
-#     relposned: true
-#     posllh: true
-#     posecef: true
-# sv_in:
-#   reset: false              # True: disables and re-enables survey-in (resets)
-#                             # False: Disables survey-in only if TMODE3 is
-#                             # disabled
-#   min_dur: 300              # Survey-In Minimum Duration [s]
-#   acc_lim: 3.0              # Survey-In Accuracy Limit [m]
